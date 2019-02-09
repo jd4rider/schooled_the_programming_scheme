@@ -3,6 +3,7 @@ package schooled_the_programming_scheme
 import grails.converters.JSON
 import groovy.transform.Synchronized
 import schooled_the_programming_scheme.Library
+import grails.transaction.Transactional
 
 
 class LibraryController {
@@ -49,7 +50,7 @@ class LibraryController {
 	@Synchronized
 	def listFiles(){
 		println(files as JSON)
-		//def files = Library.list();
+		files = Library.list();
 
 		println("======= LIST FILES CALLED ======")
 
@@ -68,8 +69,8 @@ class LibraryController {
 		println(params as JSON)
 		println("================================")
 
-		if(id == 5)
-			render ([status: "error", msg: "I failed. Told you so"] as JSON)
+		//if(id == 5)
+		//	render ([status: "error", msg: "I failed. Told you so"] as JSON)
 
 		files.each( {
 			if(it.id == id){
